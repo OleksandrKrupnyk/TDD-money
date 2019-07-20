@@ -14,11 +14,9 @@ class DollarTest extends TestCase
 
     public function testTimes()
     {
-        $five    = new Dollar(5);
-        $product = $five->times(2);
-        self::assertEquals(10, $product->amount);
-        $product = $five->times(3);
-        self::assertEquals(15, $product->amount);
+        $five = new Dollar(5);
+        self::assertEquals(new Dollar(10), $five->times(2));
+        self::assertEquals(new Dollar(15), $five->times(3));
     }
 
     public function testEquals()
