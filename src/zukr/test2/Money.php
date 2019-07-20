@@ -8,7 +8,7 @@
 namespace zukr\test2;
 
 
-class Money
+abstract class Money
 {
     protected $amount;
 
@@ -18,4 +18,15 @@ class Money
             static::class === get_class($obj)
         );
     }
+
+    public static function dollar(int $amount): Money
+    {
+        return new Dollar($amount);
+    }
+
+    public static function franc(int $amount): Money
+    {
+        return new Franc($amount);
+    }
+    abstract function times(int $multiplier): Money;
 }

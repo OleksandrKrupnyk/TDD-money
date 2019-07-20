@@ -13,8 +13,8 @@ class FrancTest extends TestCase
 {
     public function testTimes()
     {
-        $five = new Franc(5);
-        self::assertEquals(new Franc(10), $five->times(2));
-        self::assertEquals(new Franc(15), $five->times(3));
+        $five = Money::franc(5);
+        self::assertEquals(Money::franc(10), $five->times(2));
+        self::assertEquals(Money::franc(15), $five->times(3));
     }
 }
