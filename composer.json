@@ -1,0 +1,17 @@
+{
+    "name": "zukr/test2",
+    "authors": [
+        {
+            "name": "Alex Krupnik",
+            "email": "krupnik_a@ukr.net"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "zukr\\test2\\":"src/zukr/test2"
+        }
+    }
+}
