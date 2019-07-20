@@ -27,4 +27,10 @@ class DollarTest extends TestCase
         self::assertFalse(Money::franc(5)->equals(Money::franc(6)));
         self::assertFalse(Money::franc(5)->equals(Money::dollar(5)), 'Franc 5 != Dollar 5');
     }
+
+    public function testCurrency(): void
+    {
+        self::assertEquals('USD', Money::dollar(1)->currency());
+        self::assertEquals('CHF', Money::franc(1)->currency());
+    }
 }
