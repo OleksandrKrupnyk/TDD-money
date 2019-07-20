@@ -8,22 +8,19 @@
 namespace zukr\test2;
 
 
-class Franc
+class Franc extends Money
 {
     public function __construct(int $amount)
     {
         $this->amount = $amount;
     }
 
-    private $amount;
+
 
     public function times(int $multiplier)
     {
         return new self($this->amount * $multiplier);
     }
 
-    public function equals(Franc $obj)
-    {
-        return $this->amount === $obj->amount;
-    }
+
 }

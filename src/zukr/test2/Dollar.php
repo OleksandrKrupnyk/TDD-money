@@ -8,22 +8,17 @@
 namespace zukr\test2;
 
 
-class Dollar
+class Dollar extends Money
 {
     public function __construct(int $amount)
     {
         $this->amount = $amount;
     }
 
-    private $amount;
 
     public function times(int $multiplier)
     {
         return new self($this->amount * $multiplier);
     }
 
-    public function equals(Dollar $obj)
-    {
-        return $this->amount === $obj->amount;
-    }
 }
