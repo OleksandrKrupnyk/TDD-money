@@ -20,15 +20,15 @@ class Money
 
     public static function dollar(int $amount): Money
     {
-        return new Money($amount,'USD');
+        return new Money($amount, 'USD');
     }
 
     public static function franc(int $amount): Money
     {
-        return new Money($amount,'CHF');
+        return new Money($amount, 'CHF');
     }
 
-    public function equals(Money $obj):bool
+    public function equals(Money $obj): bool
     {
         return ($this->amount === $obj->amount &&
             $this->currency === $obj->currency
@@ -36,13 +36,12 @@ class Money
     }
 
 
-
     public function currency(): String
     {
         return $this->currency;
     }
 
-    public function __construct(int $amount,string $currency)
+    public function __construct(int $amount, string $currency)
     {
         $this->amount   = $amount;
         $this->currency = $currency;
@@ -50,6 +49,11 @@ class Money
 
     public function times(int $multiplier): Money
     {
-        return new Money($this->amount * $multiplier,$this->currency);
+        return new Money($this->amount * $multiplier, $this->currency);
+    }
+
+    public function plus(Money $addend):Money
+    {
+        return new Money($this->amount + $addend->amount, $this->currency);
     }
 }
