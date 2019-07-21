@@ -10,7 +10,7 @@ namespace zukr\test2;
 
 use phpDocumentor\Reflection\Types\String_;
 
-abstract class Money
+class Money
 {
     protected $amount;
     /**
@@ -20,22 +20,22 @@ abstract class Money
 
     public static function dollar(int $amount): Money
     {
-        return new Dollar($amount,'USD');
+        return new Money($amount,'USD');
     }
 
     public static function franc(int $amount): Money
     {
-        return new Franc($amount,'CHF');
+        return new Money($amount,'CHF');
     }
 
-    public function equals(Money $obj)
+    public function equals(Money $obj):bool
     {
         return ($this->amount === $obj->amount &&
-            static::class === get_class($obj)
+            $this->currency === $obj->currency
         );
     }
 
-    abstract function times(int $multiplier): Money;
+
 
     public function currency(): String
     {
@@ -48,4 +48,8 @@ abstract class Money
         $this->currency = $currency;
     }
 
+    public function times(int $multiplier): Money
+    {
+        return new Money($this->amount * $multiplier,$this->currency);
+    }
 }
