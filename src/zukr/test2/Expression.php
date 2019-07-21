@@ -10,5 +10,5 @@ namespace zukr\test2;
 
 Interface Expression
 {
-
+    public function reduce(string $to): Money;
 }

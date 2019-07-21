@@ -11,8 +11,8 @@ namespace zukr\test2;
 class Bank
 {
 
-    public function reduce(Money $sum, string $string)
+    public function reduce(Expression $source, string $to)
     {
-        return Money::dollar(10);
+        return $source->reduce($to);
     }
 }

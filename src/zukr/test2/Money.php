@@ -10,7 +10,7 @@ namespace zukr\test2;
 
 class Money implements Expression
 {
-    protected $amount;
+    public $amount;
     /**
      * @var string
      */
@@ -53,5 +53,10 @@ class Money implements Expression
     public function plus(Money $addend): Expression
     {
         return new Sum($this,$addend);
+    }
+
+    public function reduce(string $to): Money
+    {
+        return $this;
     }
 }

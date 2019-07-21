@@ -28,5 +28,12 @@ class Sum implements Expression
     public function __construct(Money $augend, Money $addend)
     {
         $this->augend = $augend;
-        $this->addend = $addend;}
+        $this->addend = $addend;
+    }
+
+    public function reduce(string $to): Money
+    {
+        $amount = $this->addend->amount + $this->augend->amount;
+        return new Money($amount, $to);
+    }
 }
