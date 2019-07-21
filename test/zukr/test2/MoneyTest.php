@@ -34,7 +34,10 @@ class MoneyTest extends TestCase
 
     public function testSimpleAdition()
     {
-        $sum = Money::dollar(5)->plus(Money::dollar(5));
-        self::assertEquals(Money::dollar(10), $sum);
+        $five = Money::dollar(5);
+        $sum = $five->plus($five);
+        $bank = new Bank();
+        $reduced = $bank->reduce($sum,'USD');
+        self::assertEquals(Money::dollar(10), $reduced);
     }
 }
