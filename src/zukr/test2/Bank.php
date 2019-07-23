@@ -26,9 +26,9 @@ class Bank
      *
      * @param Expression $source
      * @param string     $to
-     * @return Money
+     * @return Expression
      */
-    public function reduce(Expression $source, string $to): Money
+    public function reduce(Expression $source, string $to): Expression
     {
         return $source->reduce($this, $to);
     }

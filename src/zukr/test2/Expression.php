@@ -28,4 +28,10 @@ Interface Expression
      * @return Expression
      */
     public function plus(Expression $addend): Expression;
+
+    /**
+     * @param int $multiplier
+     * @return Expression
+     */
+    public function times(int $multiplier): Expression;
 }
