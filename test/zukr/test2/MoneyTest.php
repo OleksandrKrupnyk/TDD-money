@@ -48,7 +48,7 @@ class MoneyTest extends TestCase
         self::assertEquals($five, $sum->addend);
     }
 
-    public function testReduceSum():void
+    public function testReduceSum(): void
     {
         /**
          * @var Expression $sum
@@ -61,10 +61,23 @@ class MoneyTest extends TestCase
         self::assertEquals(Money::dollar(7), $result);
     }
 
-    public function testReduceMoney():void
+    public function testReduceMoney(): void
     {
         $bank   = new Bank();
         $result = $bank->reduce(Money::dollar(1), 'USD');
         self::assertEquals(Money::dollar(1), $result);
+    }
+
+    public function testReduceMoneyDifferrntCurrency() :void
+    {
+        $bank = new Bank();
+        $bank->addRate('CHF', 'USD', 2);
+        $result = $bank->reduce(Money::franc(2), 'USD');
+        self::assertEquals(Money::dollar(1), $result);
+    }
+
+    public function testIdentityRate() :void
+    {
+        self::assertEquals(1, (new Bank())->rate('USD', 'USD'));
     }
 }
