@@ -9,6 +9,11 @@ namespace zukr\test2;
 
 use zukr\test2\Currency as C;
 
+/**
+ * Class Bank
+ *
+ * @package zukr\test2
+ */
 class Bank
 {
     /**
@@ -17,7 +22,7 @@ class Bank
     private $rates = [];
 
     /**
-     * Reduce превращать в другую валюту
+     * Преобразовать в валюту
      *
      * @param Expression $source
      * @param string     $to
@@ -35,7 +40,7 @@ class Bank
      */
     public function rate(string $from, string $to): int
     {
-        if($from === $to) return 1;
+        if ($from === $to) return 1;
         return (int)$this->rates[$from][$to]['rate'];
     }
 

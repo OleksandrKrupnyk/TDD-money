@@ -15,9 +15,17 @@ namespace zukr\test2;
 Interface Expression
 {
     /**
+     * Конверитровать в валюту
+     *
      * @param Bank   $bank
-     * @param string $to
-     * @return Money
+     * @param string $to Имя Валюты
+     * @return Expression
      */
-    public function reduce(Bank $bank, string $to): Money;
+    public function reduce(Bank $bank, string $to): Expression;
+
+    /**
+     * @param Expression $addend
+     * @return Expression
+     */
+    public function plus(Expression $addend): Expression;
 }

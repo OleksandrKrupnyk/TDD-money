@@ -8,6 +8,7 @@
 namespace zukr\test2;
 
 use PHPUnit\Framework\TestCase;
+use zukr\test2\Expression;
 
 class MoneyTest extends TestCase
 {
@@ -68,7 +69,7 @@ class MoneyTest extends TestCase
         self::assertEquals(Money::dollar(1), $result);
     }
 
-    public function testReduceMoneyDifferrntCurrency() :void
+    public function testReduceMoneyDifferrntCurrency(): void
     {
         $bank = new Bank();
         $bank->addRate('CHF', 'USD', 2);
@@ -76,8 +77,18 @@ class MoneyTest extends TestCase
         self::assertEquals(Money::dollar(1), $result);
     }
 
-    public function testIdentityRate() :void
+    public function testIdentityRate(): void
     {
         self::assertEquals(1, (new Bank())->rate('USD', 'USD'));
+    }
+
+    public function testMixedAddition(): void
+    {
+        $fiveBucks = Money::dollar(5);
+        $tenFranks = Money::franc(10);
+        $bank      = new Bank();
+        $bank->addRate('CHF', 'USD', 2);
+        $result = $bank->reduce($fiveBucks->plus($tenFranks), 'USD');
+        self::assertEquals(Money::dollar(10), $result);
     }
 }

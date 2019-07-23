@@ -7,15 +7,19 @@
 
 namespace zukr\test2;
 
-
+/**
+ * Class Sum
+ *
+ * @package zukr\test2
+ */
 class Sum implements Expression
 {
     /**
-     * @var Money
+     * @var Expression
      */
     public $augend;
     /**
-     * @var Money
+     * @var Expression
      */
     public $addend;
 
@@ -25,15 +29,28 @@ class Sum implements Expression
      * @param Money $augend
      * @param Money $addend
      */
-    public function __construct(Money $augend, Money $addend)
+    public function __construct(Expression $augend, Expression $addend)
     {
         $this->augend = $augend;
         $this->addend = $addend;
     }
 
-    public function reduce(Bank $bank, string $to): Money
+    /**
+     * {@inheritDoc}
+     */
+    public function reduce(Bank $bank, string $to): Expression
     {
-        $amount = $this->addend->amount + $this->augend->amount;
+        $amount = $this->addend->reduce($bank, $to)->amount
+            + $this->augend->reduce($bank, $to)->amount;
         return new Money($amount, $to);
+    }
+
+    /**
+     * @param Expression $addend
+     * @return Expression
+     */
+    public function plus(Expression $addend): Expression
+    {
+        return null;
     }
 }

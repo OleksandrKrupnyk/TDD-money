@@ -8,8 +8,8 @@
 namespace zukr\test2;
 
 
-class Currency
+interface Currency
 {
-    const USD = 'USD';
-    const CHF = 'CHF';
+    public const USD = 'USD';
+    public const CHF = 'CHF';
 }

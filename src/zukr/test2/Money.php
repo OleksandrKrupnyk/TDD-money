@@ -76,28 +76,26 @@ class Money implements Expression
 
     /**
      * @param int $multiplier
-     * @return Money
+     * @return Expression
      */
-    public function times(int $multiplier): Money
+    public function times(int $multiplier): Expression
     {
         return new Money($this->amount * $multiplier, $this->currency);
     }
 
     /**
-     * @param Money $addend
+     * @param Expression $addend
      * @return Expression
      */
-    public function plus(Money $addend): Expression
+    public function plus(Expression $addend): Expression
     {
         return new Sum($this, $addend);
     }
 
     /**
-     * @param Bank   $bank
-     * @param string $to
-     * @return Money
+     * {@inheritDoc}
      */
-    public function reduce(Bank $bank, string $to): Money
+    public function reduce(Bank $bank, string $to): Expression
     {
         $rate = $bank->rate($this->currency, $to);
         return new Money($this->amount / $rate, $to);
