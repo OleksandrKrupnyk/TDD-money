@@ -7,7 +7,11 @@
 
 namespace zukr\test2;
 
-
+/**
+ * Class Foo
+ *
+ * @package zukr\test2
+ */
 class Foo
 {
 

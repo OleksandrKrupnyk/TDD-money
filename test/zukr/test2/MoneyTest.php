@@ -10,6 +10,11 @@ namespace zukr\test2;
 use PHPUnit\Framework\TestCase;
 use zukr\test2\Expression;
 
+/**
+ * Class MoneyTest
+ *
+ * @package zukr\test2
+ */
 class MoneyTest extends TestCase
 {
 

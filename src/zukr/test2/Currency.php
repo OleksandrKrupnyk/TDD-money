@@ -7,7 +7,11 @@
 
 namespace zukr\test2;
 
-
+/**
+ * Interface Currency
+ *
+ * @package zukr\test2
+ */
 interface Currency
 {
     public const USD = 'USD';
